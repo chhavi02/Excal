@@ -1,1 +1,5 @@
+#Node Modules
 node_modules
+
+#session secrets
+# config.js // Commenting this line for now.
