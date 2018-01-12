@@ -2,20 +2,24 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Register</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
-	<script type="text/javascript" src="/javascripts/login.js"></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<!-- <script type="text/javascript" src="/javascripts/login.js"></script> -->
 </head>
 <body>
-	<div id="heading">
-		<h2>Log in to account</h2>
+	<div class="header">
+		<h4>Night Duty</h4>
 	</div>
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
-		
+		<fieldset>
 		<form method="POST">
+			<div class="form-row col-md-12">
+				<h3 class="heading">Log in to your account</h3>
+			</div>
 			<div class="form-group col-md-12">
 				<label for="empCode">Employee Code</label>
 				<input type="text" name="empCode" id="empCode" class="form-control" required>
@@ -32,6 +36,7 @@
 				<button type="submit" class="btn btn-primary btn-sm btn-block">LOG IN</button>
 			</div>
 		</form>
+		</fieldset>
 	</div>
 	<div class="col-md-3"></div>
 </body>
