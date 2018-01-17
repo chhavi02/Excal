@@ -5,7 +5,7 @@
 	margin: 0;
 }
 
-h2, h3, h4{
+h1, h2, h3, h4{
 	margin: 0;
 	padding: 10px;
 	text-align: center;	
@@ -24,6 +24,7 @@ h2, h3, h4{
 #heading-home{
 	letter-spacing: 1px;
 	margin-bottom: 80px;
+	color: white;
 }
 form {
 	display: inline-block;
@@ -45,19 +46,48 @@ fieldset {
 	transform: translate(-50%, -50%);
 }
 #admin-icon{
-	width: 128px;
+	width: 80px;
 	border-radius: 50%;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 10px;
 }
-p{
-	padding-bottom: 70px;
-	padding-top: 10px;
-	font-size: 18px;
-	text-align: center;
+
+input[type=text], input[type=password], option{
+	height: 2.17em;
+	text-indent: .33em;
+	line-height: 1.6em;
+	padding: 2px .3em;
+	border-color: #a3d0e4;
 }
-span{
-	color: grey;
+/*input[type=text]:hover, input[type=password]{
+	background-color: #fff;
+	color: #003f59;
+	background: 0 0;
+}*/
+#particles-js {
+  background: #14325c
+
+  /* #16235A acha blue dark
+	 #c0334d  acha purple pink
+
+  */
+}
+.particle{
+	background-color: white;
+	color: black;
 	font-size: 14px;
-	font-style: italic;
+	border: none;
+
 }
+.particle:hover{
+	background-color: #B0BEC5;
+	color: black;
+	/*box-shadow: 1px 1px 1px 1px #CFD8DC;*/
+	
+}
+.particle:click{
+	background-color: #B0BEC5;
+	color: black;
+}
+

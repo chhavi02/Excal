@@ -9,10 +9,11 @@ var session = require('express-session');
 var config = require('./config');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 var register = require('./routes/register');
 var login = require('./routes/login');
-var admin = require('./routes/admin/index');
+var dashboard = require('./routes/admin/dashboard');
+var viewDuties = require('./routes/admin/viewDuties');
+var createCentre = require('./routes/admin/createCentre');
 var app = express();
 
 // view engine setup
@@ -36,10 +37,11 @@ app.use(session({
 }));
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/register', register);
 app.use('/login', login);
-app.use('/admin', admin)
+app.use('/dashboard', dashboard);
+app.use('/admin/viewDuties', viewDuties);
+app.use('/admin/createCentre', createCentre);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

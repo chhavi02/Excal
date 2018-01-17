@@ -14,7 +14,7 @@
 		});
 
 		DOM.phoneNumber.kendoMaskedTextBox({
-			mask: '(999) 000-0000'
+			mask: '(91) 00000-00000'
 		});
 	});
 
