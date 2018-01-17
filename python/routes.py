@@ -4,11 +4,19 @@ from face_recog import check_images
 from upload_file import upload_file
 my_routes = Blueprint('route', __name__)
 
+'''
+    TODO:
+    remove get method from here
+    somehow do the session wali chiz here too
+    maybe get the path of the registeration-time-image instead of keeping it constant (this may have to be included in the database)
+    atleast remove the static filename ending from the registration-image
+'''
+
 @my_routes.route('/', methods=['GET', 'POST'])
 def check():
     if request.method == 'POST':
         emp_id = request.data['emp_id']
-        emp_image = request.files['emp_image']
+        # emp_image = request.files['emp_image']
         attendance_image = request.files['attendance_image']
 
         result = upload_file(attendance_image, emp_id)
