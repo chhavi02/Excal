@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+var uploadController = require('../controllers/upload');
+
+
 function checkLogin(req, res, next) {
 	if(req.session) {
 		next();
@@ -21,8 +24,6 @@ router.get('/', checkLogin, function(req, res, next) {
 	}
 });
 
-router.post('/', function(req, res) {
-	// Upload image route POST
-});
+router.post('/', uploadController.uploadPOST);
 
 module.exports = router;

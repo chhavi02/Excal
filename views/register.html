@@ -9,10 +9,21 @@
 	<link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.common.min.css" />
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 	
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="http://kendo.cdn.telerik.com/2017.3.1026/js/jquery.min.js"></script>
-        <script src="http://kendo.cdn.telerik.com/2017.3.1026/js/kendo.all.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2017.3.1026/js/kendo.all.min.js"></script>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+<style type="text/css">
+	/*Adding here for now*/
+	.captchaStyle {
+    left: 50%;
+    margin-left: -156px;
+    margin-top: 1em;
+    padding-bottom: 0;
+    position: relative;
+}
+</style>
 </head>
 <body>
 	<div class="header">
@@ -21,10 +32,14 @@
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
 		<fieldset>
-			<form method="POST">
+			<form class="registerForm" action="/register" method="position">
 				<div class="form-row col-md-12">
 					<h3 class="heading">Sign Up</h3>
 				</div>
+			    <div class="form-row col-md-12 alert alert-danger fade in hidden">
+			        <a href="#" class="close" data-dismiss="alert">&times;</a>
+			        <strong>Error!</strong> <span class="message">A problem has been occurred while submitting your data.</span>
+			    </div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="firstName">Name</label>
@@ -75,9 +90,11 @@
 	  					Re-enter the password
 					</small>
 				</div>
+				<div class="form-group form-row col-md-12 g-recaptcha captchaStyle" data-sitekey="6Lfd_ycUAAAAAC83sUyFOoADW08cE2QV-eFo5t4a"></div>
+
 
 				<div class="form-group form-row col-md-12">
-					<button type="submit" class="btn btn-primary btn-sm btn-block">REGISTER</button>
+					<button class="btn btn-primary btn-sm btn-block btn-register">REGISTER</button>
 				</div>
 
 			</form>
