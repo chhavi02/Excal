@@ -1,4 +1,4 @@
-(function() {
+(function($) {
   // The width and height of the captured photo. We will set the
   // width to the value defined here, but the height will be
   // calculated based on the aspect ratio of the input stream.
@@ -102,6 +102,24 @@
       context.drawImage(video, 0, 0, width, height);
     
       var data = canvas.toDataURL('image/png');
+
+      // AJAX request to server with image data.
+      $.ajax({
+        type: 'post',
+        url:'/upload',
+        data: {
+          image: data
+        },
+        success: function(res, status,  xhr) {
+          alert('Image  uploaded succesfully');
+          $(location).attr('href', 'http://localhost:3000/');
+        },
+        error: function(res,status, xhr) {
+          alert('nhi hua');
+        }      
+      });
+
+
       photo.setAttribute('src', data);
     } else {
       clearphoto();
@@ -111,4 +129,4 @@
   // Set up our event listener to run the startup process
   // once loading is complete.
   window.addEventListener('load', startup, false);
-})();
+})(jQuery);
