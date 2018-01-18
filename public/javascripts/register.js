@@ -1,19 +1,18 @@
 (function(d, $) {
 	var DOM = {
 		empCode: $('#empCode'),
-		phoneNumber: $('#phoneNumber')
+		contact: $('#contact')
 	},
 	Functions = {
 
 	}
-
 
 	$(d).ready(function() {
 		DOM.empCode.kendoMaskedTextBox({
 			mask: '0000'
 		});
 
-		DOM.phoneNumber.kendoMaskedTextBox({
+		DOM.contact.kendoMaskedTextBox({
 			mask: '(91) 00000-00000'
 		});
 	});

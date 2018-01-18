@@ -27,7 +27,7 @@ $('#findCentre').on('click', function(e){
 		          	console.log('Long: ' + long);
 		          	var location= {lat: lati, lng: long};
 		          	var map = new google.maps.Map(document.getElementById('map'), {
-			          zoom: 12,
+			          zoom: 20,
 			          center: location
 			        });
 			          var marker = new google.maps.Marker({
