@@ -1,5 +1,9 @@
 #Node Modules
 node_modules
-
+python/__pycache__/
+python/myenv/
+python/images/
+obama.jpg
+who_s_this.jpg
 #session secrets
 # config.js // Commenting this line for now.
