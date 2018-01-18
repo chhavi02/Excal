@@ -14,8 +14,10 @@ var session = require('express-session');
 var config = require('./config');
 var register = require('./routes/register');
 var login = require('./routes/login');
+var dashboard = require('./routes/admin/dashboard');
+var viewDuties = require('./routes/admin/viewDuties');
+var createCentre = require('./routes/admin/createCentre');
 var upload = require('./routes/upload');
-var admin = require('./routes/admin/index');
 
 var app = express();
 
@@ -51,9 +53,10 @@ app.use(session({
 
 app.use('/register', register);
 app.use('/login', login);
-app.use('/admin', admin);
+app.use('/dashboard', dashboard);
+app.use('/admin/viewDuties', viewDuties);
+app.use('/admin/createCentre', createCentre);
 app.use('/upload', upload);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

@@ -1,10 +1,14 @@
 (function(d, $) {
 	var DOM = {
 		empCode: $('#empCode'),
+<<<<<<< HEAD
 		phoneNumber: $('#phoneNumber'),
 		password: $('#password'),
 		confirmPassword: $('#confirmPassword'),
 		registerForm: $('.registerForm')
+=======
+		contact: $('#contact')
+>>>>>>> 4c88bc945a61bf2cf2750851020503e195f43fb1
 	},
 	Functions = {
 		submitRegisterForm: function(event) {
@@ -46,14 +50,13 @@
 
 	}
 
-
 	$(d).ready(function() {
 		DOM.empCode.kendoMaskedTextBox({
 			mask: '0000'
 		});
 
-		DOM.phoneNumber.kendoMaskedTextBox({
-			mask: '(999) 000-0000'
+		DOM.contact.kendoMaskedTextBox({
+			mask: '(91) 00000-00000'
 		});
 		DOM.registerForm.submit(Functions.submitRegisterForm);
 
