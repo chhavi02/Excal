@@ -36,6 +36,8 @@ exports.registerPOST = function(req, res) {
 							console.log('Error encryption password.');
 							res.redirect('/');
 						}
+						req.body.hash = hash;
+						res.redirect('/catalog/employee/create');
 						console.log(hash);
 						/* @Paragi.
 							Insert into database.

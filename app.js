@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 var catalog = require('./routes/catalog');
 var con = require('./connection');
 var session = require('express-session');
@@ -32,7 +31,6 @@ app.set('view engine', 'html');
 app.use(logger('dev'));
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/catalog',catalog);
 con.connect();
 var db = con.db; 

@@ -11,11 +11,11 @@ var scheduleDutySchema = new Schema({
         required : true
     },
     centreCode : {
-        type :int,
+        type :Number,
         required : true
     },
     locationCode :{
-        type : int,
+        type : Number,
         required : true
     },
     startDuty :{
