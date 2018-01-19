@@ -1,6 +1,7 @@
 var bcrypt = require('bcrypt');
 var request = require('request');
 
+// var employee = require('./employeeController');
 var recaptcha = require('../recaptcha');
 
 exports.registerPOST = function(req, res) {
@@ -37,7 +38,17 @@ exports.registerPOST = function(req, res) {
 							res.redirect('/');
 						}
 						req.body.hash = hash;
-						res.redirect('/catalog/employee/create');
+						req.body.isImage = false;
+						console.log(req.body);
+						// res.redirect('/catalog/employee/create');
+						request.post({url: 'http://localhost:3000/catalog/employee/create', form: req.body}, function(error, httpResponse, body) {
+							// console.log(httpResponse);
+							if(error) {
+								console.log(error);
+							}
+							console.log(body);
+						});
+						// employee.exployee_create_post(req, res);
 						console.log(hash);
 						/* @Paragi.
 							Insert into database.

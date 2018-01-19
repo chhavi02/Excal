@@ -34,7 +34,8 @@ exports.employee_create_post = function(req,res,next){
         if(e){
             console.log("Employee instance could not be saved !!");
             //throw e;
-            res.status(400).send(e);
+            // res.status(400).send(e);
+            res.send('error');
         }
         else{
             res.send(doc); 
