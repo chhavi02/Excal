@@ -17,7 +17,7 @@ var dashboard = require('./routes/admin/dashboard');
 var viewDuties = require('./routes/admin/viewDuties');
 var createCentre = require('./routes/admin/createCentre');
 var upload = require('./routes/upload');
-
+var attendance = require('./routes/attendance');
 var app = express();
 
 // view engine setup
@@ -55,6 +55,7 @@ app.use('/dashboard', dashboard);
 app.use('/admin/viewDuties', viewDuties);
 app.use('/admin/createCentre', createCentre);
 app.use('/upload', upload);
+app.use('/attendance', attendance);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
