@@ -25,13 +25,13 @@ exports.scheduleDuty_list = function(req,res,next){
 //    });
 };
 
-exports.scheduleDuty_create_get = function(req,res,next){
+exports.scheduleDuty_assign_get = function(req,res,next){
     
    
 };
 
 
-exports.scheduleDuty_create_post = function(req,res,next){
+exports.scheduleDuty_assign_post = function(req,res,next){
    console.log('Inside create scheduleDuty');
    var scheduleDutys_instance = new scheduleDutys({
         empCode : req.body.empCode,
