@@ -3,6 +3,8 @@ var request = require('request');
 
 // var employee = require('./employeeController');
 var recaptcha = require('../recaptcha');
+var employees = require('../models/employee');
+
 
 exports.registerPOST = function(req, res) {
 	console.log('REGISTER POST');
@@ -40,8 +42,22 @@ exports.registerPOST = function(req, res) {
 						req.body.hash = hash;
 						req.body.isImage = false;
 						console.log(req.body);
+						var newEmployee = new employees({
+					        empCode: req.body.empCode,
+					        empName: req.body.firstName + ' ' + req.body.lastName,
+					        contact: req.body.contact,
+					        password: req.body.hash,
+					        isImage : req.body.isImage							
+						});
+						newEmployee.save(function(error, doc) {
+							if(error) {
+								console.log('Error: ' + error);
+							} else {
+								console.log(doc);
+							}
+						})
 						// res.redirect('/catalog/employee/create');
-						request.post('http://localhost:3000/catalog/employee/create').form({pawan: 'pawan'});
+						// request.post('http://localhost:3000/catalog/employee/create').form({pawan: 'pawan'});
 						/*, function(error, httpResponse, body) {
 							// console.log(httpResponse);
 							if(error) {
@@ -70,7 +86,7 @@ exports.registerPOST = function(req, res) {
 										'responseDesc': 'server error'
 			                		});
 						*/
-						res.redirect('/upload');
+						// res.redirect('/upload');
 					});
 				});
 			}
