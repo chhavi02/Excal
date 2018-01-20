@@ -12,46 +12,21 @@ my_routes = Blueprint('route', __name__)
     atleast remove the static filename ending from the registration-image
 '''
 
-@my_routes.route('/', methods=['GET', 'POST'])
-def check():
-    if request.method == 'POST':
-        emp_id = request.data['emp_id']
-        # emp_image = request.files['emp_image']
-        attendance_image = request.files['attendance_image']
+@my_routes.route('/<string:emp_id>', methods=['GET'])
+def check(emp_id):
+    string = '12345'
+    for x in string:
+        filename = emp_id + '_' + x +'.png'
+        if check_images(filename, emp_id):
+            print("MATCH")
 
-        result = upload_file(attendance_image, emp_id)
-        if result['status'] == 'OK':
-            if check_images(result['filename'], emp_id):
-                return {
-                    'status': 200,
-                    'message': 'MATCH'
-                }
-            else:
-                return {
-                    'status': 400,
-                    'message': 'MISMATCH'
-                }
         else:
+            print("MISMATCH")
             return {
                 'status': 400,
-                'message': 'BAD REQUEST'
+                'message': 'MISMATCH'
             }
-
-
-        # emp_image = Image.open(emp_image)
-        # print(emp_image.format, emp_image.mode)
-        # attendance_image = Image.open(attendance_image)
-
-        # if check_images(emp_image, attendance_image):
-        #     return {
-        #         'status': 200,
-        #         'message': 'MATCH'
-        #     }
-        # else:
-        #     return {
-        #         'status': 400,
-        #         'message': 'MISMATCH'
-        #     }
-        # return 'badumbum'
-    else:
-        return render_template('test.html')
+    return {
+        'status': 200,
+        'message': 'MATCH'
+    }

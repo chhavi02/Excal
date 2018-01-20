@@ -32,14 +32,14 @@ exports.loginPOST = function(req, res) {
 		 	if(passMatch === true) {
 		 		var user = result;
 		 		console.log(user);
-	 		    var fileName = __dirname + '/../uploads/' + user.empCode + '.png';
+	 		    var fileName = __dirname + '/../python/images/' + user.empCode + '/register/' + user.empCode + '.png';
 			    var image = fs.readFileSync(fileName);
 			    req.session.image = new Buffer(image, 'binary').toString('base64');
 			    req.session.image = 'data:image/png;base64,' + req.session.image;
 			    console.log(req.session.image);
 
 				req.session.empCode = user.empCode;
-                req.session.empName = user.empName;                                                                                                                                 
+                req.session.empName = user.empName;
                 req.session.cookie.maxAge = 24 * 60 * 60 * 1000 * 365;
 		 		if(user.empCode == 1997) {
 		 			req.session.isAdmin = true;
