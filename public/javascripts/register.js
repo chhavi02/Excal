@@ -1,14 +1,10 @@
 (function(d, $) {
 	var DOM = {
 		empCode: $('#empCode'),
-<<<<<<< HEAD
-		phoneNumber: $('#phoneNumber'),
 		password: $('#password'),
 		confirmPassword: $('#confirmPassword'),
-		registerForm: $('.registerForm')
-=======
+		registerForm: $('.registerForm'),
 		contact: $('#contact')
->>>>>>> 4c88bc945a61bf2cf2750851020503e195f43fb1
 	},
 	Functions = {
 		submitRegisterForm: function(event) {
