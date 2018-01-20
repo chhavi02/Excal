@@ -1,5 +1,6 @@
 var bcrypt = require('bcrypt');
 var employees = require('../models/employee');
+var fs = require('fs');
 
 exports.loginPOST = function(req, res) {
 	console.log('Login POST Method');
