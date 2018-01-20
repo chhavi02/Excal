@@ -43,10 +43,11 @@ exports.loginPOST = function(req, res) {
                 req.session.cookie.maxAge = 24 * 60 * 60 * 1000 * 365; 
 		 		if(user.empCode == 1997) {
 		 			req.session.isAdmin = true;
-		 			res.render('admin/dashboard', {
+		 			/*res.render('admin/dashboard', {
 		 				image: req.session.image,
 		 				name: req.session.empName
-		 			});
+		 			});*/
+		 			res.redirect('/dashboard');
 		 		} else {
 		 			req.session.isAdmin = false;
 		 			res.send('normal user');

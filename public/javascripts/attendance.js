@@ -45,9 +45,10 @@
 				navigator.geolocation.getCurrentPosition(function(position) {
 					lat = position.coords.latitude;
 					long = position.coords.longitude;
-					alert('allaha hu akbar');
+					console.log(lat, long);
+					console.log('Successfully retrieved device location');
 					takepicture();
-				})
+				});
 			}
 			event.preventDefault();
 		}, false);
@@ -68,7 +69,6 @@
 	}
 
 	function takepicture() {
-		console.log('asdlkjfgkasdjfgujasdf');
 		var context = canvas.getContext('2d');
 		if(width && height) {
 			canvas.width = width;
@@ -118,15 +118,34 @@
 	}
 
 	function processImage() {
-	    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-        console.log(lat);
-// AJAX request to set lat, long and photos array;
-    	} else {
-        	console.log("Geolocation is not supported by this browser.");
+	    console.log('Image clicked successfully');
+	    var data = {
+	    	photo: photo,
+	    	lat: lat,
+	    	long: long
+	    };
+	    console.log(data);
+	    console.log(photo);
+	    var i;
+	    var imageData = '';
+	    for(i = 1; i <= 4; i++) {
+	    	imageData += photo[i] + ' | ';
 	    }
-	    // console.log(photo);
-
+	    console.log(imageData);
+	    $.ajax({
+	    	type: 'post',
+	    	url: '/attendance',
+	    	data: data,
+	    	success: function(responseData, status, xhr) {
+	    		// console.log(responseData, status, xhr);
+	    		console.log('success');
+	    	},
+	    	error: function(res, status, xhr) {
+	    		// console.log(res, status, xhr);
+	    		console.log('error');
+	    	}
+	    });
+	    return false;
 	}
 
 	$(document).ready(function() {
