@@ -39,7 +39,7 @@ exports.loginPOST = function(req, res) {
 			    console.log(req.session.image);
 
 				req.session.empCode = user.empCode;
-                req.session.empName = user.empName;
+                req.session.empName = user.empName;                                                                                                                                 
                 req.session.cookie.maxAge = 24 * 60 * 60 * 1000 * 365;
 		 		if(user.empCode == 1997) {
 		 			req.session.isAdmin = true;
