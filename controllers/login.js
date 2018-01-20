@@ -21,20 +21,29 @@ exports.loginPOST = function(req, res) {
 		 console.log(result);
 		 var password = result.password;
 		 console.log(password);
-		 bcrypt.compare(req.body.password, data.password, function(error, passMatch) {
+		 bcrypt.compare(req.body.password, password, function(error, passMatch) {
 		 	if(error) {
 		 		console.log('Password Validation Failed.');
 		 		res.json({
 		 			responseMessage: 'Failed authentication'
 		 		});
-		 	// res.render('login');
 		 	}
 		 	if(passMatch === true) {
-		 		res.redirect('/dashboard');
-		 	}
-		 })
+		 		var user = result;
+		 		console.log(user);
+				req.session.empCode = user.empCode;                                                                                                                                     
+                req.session.empName = user.empName;                                                                                                                                 
+                req.session.cookie.maxAge = 24 * 60 * 60 * 1000 * 365; 
+		 		if(user.empCode == 1997) {
+		 			req.session.isAdmin = true;
+		 			res.redirect('/dashboard');
+		 		} else {
+		 			req.session.isAdmin = false;
+		 			res.send('normal user');
+		 		}
 
-		 res.send("Working");
+		 	}
+		 });
 		}
 	});
 }

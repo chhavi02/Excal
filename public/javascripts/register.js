@@ -29,7 +29,7 @@
                         setTimeout(function () {
                             location.reload();
                         }, 10000);
-                    } else if (json.responseCode == 23505) {
+                    } else if (json.responseCode == 11000) {
                         /*DOM.errorBox.css('position', 'absolute');
                         DOM.errorBox.css('visibility', 'visible');
                         DOM.errorMessage.html('User with Employee ID already exists.');*/
@@ -41,12 +41,15 @@
 				}, 'json');
 			return false;
 			}
+			return false;
 		}
 	}, Variables = {
 
 	}
 
 	$(d).ready(function() {
+		console.log('ready');
+		console.log(DOM.empCode.val());
 		DOM.empCode.kendoMaskedTextBox({
 			mask: '0000'
 		});
