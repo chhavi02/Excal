@@ -7,3 +7,6 @@ obama.jpg
 who_s_this.jpg
 #session secrets
 # config.js // Commenting this line for now.
+
+# Uploads Directory
+uploads

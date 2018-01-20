@@ -71,7 +71,7 @@ exports.registerPOST = function(req, res) {
 			                    req.session.cookie.maxAge = 24 * 60 * 60 * 1000 * 365; 
 			                    req.session.image = null;
 			                    if(user.empCode == 1997) {
-			                    	res.session.isAdmin = true;
+			                    	req.session.isAdmin = true;
 			                    } else {
 			                    	req.session.isAdmin = false;
 			                    }
