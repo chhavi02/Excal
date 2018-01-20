@@ -5,7 +5,7 @@ var router = express.Router();
 var centre_controller = require('../controllers/centreController');
 var location_controller = require('../controllers/locationController');
 var employee_controller = require('../controllers/employeeController');
-//var scheduleDuty_controller = require('../controllers/scheduleDutyController');
+var scheduleDuty_controller = require('../controllers/scheduleDutyController');
 
 
 //router.get('/',nanoskill_controller.index);
@@ -62,7 +62,8 @@ router.get('/location/:locationCode', location_controller.location_detail);
 /* GET request for list of all location items. */
 router.get('/location/list', location_controller.all_location_list);
 
-router.get('/lcoation/centreCode/list',location_controller.location_list);
+/* GET request for list of selected centre locations. */
+router.get('/location/centreCode/list',location_controller.location_list);
 
 
 
@@ -94,29 +95,29 @@ router.get('/employee/list', employee_controller.employee_list);
 
 
 
-// /* GET request for creating a scheduleDuty . NOTE This must come before routes that display scheduleDuty (uses id) */
-// router.get('/scheduleDuty/assign', scheduleDuty_controller.scheduleDuty_assign_get);
+/* GET request for creating a scheduleDuty . NOTE This must come before routes that display scheduleDuty (uses id) */
+router.get('/scheduleDuty/assign', scheduleDuty_controller.scheduleDuty_assign_get);
 
-// /* POST request for creating scheduleDuty. */
-// router.post('/scheduleDuty/assign', scheduleDuty_controller.scheduleDuty_assign_post);
+/* POST request for creating scheduleDuty. */
+router.post('/scheduleDuty/assign', scheduleDuty_controller.scheduleDuty_assign_post);
 
-// /* GET request to delete scheduleDuty. */
-// router.get('/scheduleDuty/:id/delete', scheduleDuty_controller.scheduleDuty_delete_get);
+/* GET request to delete scheduleDuty. */
+router.get('/scheduleDuty/:id/delete', scheduleDuty_controller.scheduleDuty_delete_get);
 
-// // POST request to delete scheduleDuty
-// router.post('/scheduleDuty/:id/delete', scheduleDuty_controller.scheduleDuty_delete_post);
+// POST request to delete scheduleDuty
+router.post('/scheduleDuty/:id/delete', scheduleDuty_controller.scheduleDuty_delete_post);
 
-// /* GET request to update scheduleDuty. */
-// router.get('/scheduleDuty/:id/update', scheduleDuty_controller.scheduleDuty_update_get);
+/* GET request to update scheduleDuty. */
+router.get('/scheduleDuty/:id/update', scheduleDuty_controller.scheduleDuty_update_get);
 
-// // POST request to update scheduleDuty
-// router.post('/scheduleDuty/:id/update', scheduleDuty_controller.scheduleDuty_update_post);
+// POST request to update scheduleDuty
+router.post('/scheduleDuty/:id/update', scheduleDuty_controller.scheduleDuty_update_post);
 
-// /* GET request for one scheduleDuty. */
-// router.get('/:id', scheduleDuty_controller.scheduleDuty_detail);
+/* GET request for one scheduleDuty. */
+router.get('/:id', scheduleDuty_controller.scheduleDuty_detail);
 
-// /* GET request for list of all scheduleDuty items. */
-// router.get('/scheduleDuty/list', scheduleDuty_controller.scheduleDuty_list);
+/* GET request for list of all scheduleDuty items. */
+router.get('/scheduleDuty/list', scheduleDuty_controller.scheduleDuty_list);
 
 
 module.exports = router;

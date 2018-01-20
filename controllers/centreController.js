@@ -1,14 +1,41 @@
 var centres = require('../models/centre');
 var locations = require('../models/location');
-//var con = require('../connection');
-//var db = con.db;
+
 exports.centre_detail = function(req,res,next){
-    //console.log('something');
-    centres.find({'centreCode' : req.params.centreCode}).then((Centre)=>{
-        res.send(Centre);
-    },(e)=>{
-        res.status.send(e);
+    centres.findOne({'centreCode' : req.params.centreCode}).populate('locations',null).exec(function(err,result){
+        if(err){
+            res.status(400).send(err);
+        }
+        res.send(result);
     });
+     //console.log('something');
+    // centres.find({'centreCode' : req.params.centreCode}).then((Centre)=>{
+    //     res.send(Centre);
+    // },(e)=>{
+    //     res.status.send(e);
+    // });
+
+
+    // console.log(req.params.centreCode);
+    // centres.findOne({'centreCode' : req.params.centreCode}).then((Centre)=>{    
+    // console.log(Centre.locations);
+    // var all_locations = [];
+    // for(var locationId of Centre.locations){
+    //     console.log(locationId);
+    //     //var loc = locations.find({_id : mongoose.Types.ObjectId(locationId)});
+    //     locations.find({'_id' :locationId}).then((result)=>{
+    //         all_locations.push(result);
+    //         console.log("Result is "+ result);
+    //         console.log("All locations are " + all_locations);
+    //     },(e) =>{
+    //         res.status(400).send();
+    //   });
+    //     // all_locations.push(loc);
+    // }
+    //     res.send(all_locations);
+    // },(e)=>{
+    //     res.status.send(e);
+    // });
 }
 
 // exports.get_all_centres = function(res,req,next){

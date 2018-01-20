@@ -1,9 +1,10 @@
 var bcrypt = require('bcrypt');
 var employees = require('../models/employee');
+var fs = require('fs');
 
 exports.loginPOST = function(req, res) {
 	console.log('Login POST Method');
-	console.log(req.body);	
+	console.log(req.body);
 	// console.log(employees);
 
 	employees.findOne({'empCode': req.body.empCode}, function(err, result){
@@ -21,20 +22,39 @@ exports.loginPOST = function(req, res) {
 		 console.log(result);
 		 var password = result.password;
 		 console.log(password);
-		 bcrypt.compare(req.body.password, data.password, function(error, passMatch) {
+		 bcrypt.compare(req.body.password, password, function(error, passMatch) {
 		 	if(error) {
 		 		console.log('Password Validation Failed.');
 		 		res.json({
 		 			responseMessage: 'Failed authentication'
 		 		});
-		 	// res.render('login');
 		 	}
 		 	if(passMatch === true) {
-		 		res.redirect('/dashboard');
-		 	}
-		 })
+		 		var user = result;
+		 		console.log(user);
+	 		    var fileName = __dirname + '/../uploads/' + user.empCode + '.png';
+			    var image = fs.readFileSync(fileName);
+			    req.session.image = new Buffer(image, 'binary').toString('base64');
+			    req.session.image = 'data:image/png;base64,' + req.session.image;
+			    console.log(req.session.image);
 
-		 res.send("Working");
+				req.session.empCode = user.empCode;
+                req.session.empName = user.empName;
+                req.session.cookie.maxAge = 24 * 60 * 60 * 1000 * 365;
+		 		if(user.empCode == 1997) {
+		 			req.session.isAdmin = true;
+		 			/*res.render('admin/dashboard', {
+		 				image: req.session.image,
+		 				name: req.session.empName
+		 			});*/
+		 			res.redirect('/dashboard');
+		 		} else {
+		 			req.session.isAdmin = false;
+		 			res.send('normal user');
+		 		}
+
+		 	}
+		 });
 		}
 	});
 }
