@@ -16,6 +16,8 @@ var login = require('./routes/login');
 var dashboard = require('./routes/admin/dashboard');
 var viewDuties = require('./routes/admin/viewDuties');
 var createCentre = require('./routes/admin/createCentre');
+var addLocation = require('./routes/admin/addLocation');
+var scheduleDuty = require('./routes/admin/scheduleDuty');
 var upload = require('./routes/upload');
 
 var app = express();
@@ -31,11 +33,11 @@ app.set('view engine', 'html');
 app.use(logger('dev'));
 
 app.use('/', index);
-app.use('/catalog',catalog);
+app.use('/catalog', catalog);
 con.connect();
-var db = con.db; 
-app.use(bodyParser.json({limit: '100mb'}));
-app.use(bodyParser.urlencoded({limit: '100mb', extended: false }));
+var db = con.db;
+app.use(bodyParser.json({ limit: '100mb' }));
+app.use(bodyParser.urlencoded({ limit: '100mb', extended: false }));
 
 
 // app.use(bodyParser.json());
@@ -43,10 +45,10 @@ app.use(bodyParser.urlencoded({limit: '100mb', extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
-	secret: config.secret,
-	key: config.key,
-	resave: true,
-	saveUninitialized: true
+    secret: config.secret,
+    key: config.key,
+    resave: true,
+    saveUninitialized: true
 }));
 
 app.use('/register', register);
@@ -55,22 +57,24 @@ app.use('/dashboard', dashboard);
 app.use('/admin/viewDuties', viewDuties);
 app.use('/admin/createCentre', createCentre);
 app.use('/upload', upload);
+app.use('/admin/addLocation', addLocation);
+app.use('/admin/scheduleDuty', scheduleDuty);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;
