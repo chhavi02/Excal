@@ -5,5 +5,6 @@ python/myenv/
 python/images/
 obama.jpg
 who_s_this.jpg
+uploads
 #session secrets
 # config.js // Commenting this line for now.
