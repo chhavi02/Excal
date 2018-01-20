@@ -61,7 +61,7 @@
 		context.fillStyle = '#AAA';
 		context.fillRect(0, 0, canvas.width, canvas.height);
 
-		var data = canvas.toDataURL('image/jpeg');
+		var data = canvas.toDataURL('image/png');
 		for (var i = 1; i <= 5; i++) {
 			// photo[i].setAttribute('src', data);
 			photo[i] = data;
@@ -77,7 +77,7 @@
 			var data;
 			var stop = setInterval(function() {
 				context.drawImage(video, 0, 0, width, height);
-				testData = data = canvas.toDataURL('image/jpeg');
+				testData = data = canvas.toDataURL('image/png');
 				// photo[count].setAttribute('src', data);
 				photo[count] = data;
 				console.log('le rahe hain.');
@@ -119,18 +119,19 @@
 
 	function processImage() {
 	    console.log('Image clicked successfully');
-	    var data = {
-	    	photo: photo,
-	    	lat: lat,
-	    	long: long
-	    };
 	    console.log(data);
 	    console.log(photo);
 	    var i;
 	    var imageData = '';
 	    for(i = 1; i <= 4; i++) {
-	    	imageData += photo[i] + ' | ';
+	    	imageData += photo[i] + '|';
 	    }
+	    imageData += photo[5];
+	    var data = {
+	    	photo: imageData,
+	    	lat: lat,
+	    	long: long
+	    };
 	    console.log(imageData);
 	    $.ajax({
 	    	type: 'post',
