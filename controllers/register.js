@@ -1,7 +1,10 @@
 var bcrypt = require('bcrypt');
 var request = require('request');
 
+// var employee = require('./employeeController');
 var recaptcha = require('../recaptcha');
+var employees = require('../models/employee');
+
 
 exports.registerPOST = function(req, res) {
 	console.log('REGISTER POST');
@@ -37,29 +40,54 @@ exports.registerPOST = function(req, res) {
 							res.redirect('/');
 						}
 						req.body.hash = hash;
-						res.redirect('/catalog/employee/create');
-						console.log(hash);
-						/* @Paragi.
-							Insert into database.
-							On successful insertion: 
-								req.session.empId = user.empId;                                                                                                                                     
+						req.body.isImage = false;
+						console.log(req.body);
+						var newEmployee = new employees({
+					        empCode: req.body.empCode,
+					        empName: req.body.firstName + ' ' + req.body.lastName,
+					        contact: req.body.contact,
+					        password: req.body.hash,
+					        isImage : req.body.isImage							
+						});
+						newEmployee.save(function(error, doc) {
+							if(error) {
+								console.log('Error: ' + error);
+								if(error.code === 11000) {
+									res.json({
+										'responseCode': error.code,
+										'responseDesc': 'Unique key Error.'
+									});
+								} else {
+									res.json({
+										'responseCode': error.code,
+										'responseDesc': 'Internal server error.'
+									})
+								}
+							} else {
+								var user = req.body;
+								console.log(doc);
+								req.session.empCode = user.empCode;                                                                                                                                     
 			                    req.session.empName = user.empName;                                                                                                                                 
-			                    req.session.designation = user.designation;                                                                                                                         
 			                    req.session.cookie.maxAge = 24 * 60 * 60 * 1000 * 365; 
 			                    req.session.image = null;
-			                On unsuccessful insertion:
-			                	if unique key error
-			                		res.json({
-										'responseCode': error.code,
-										'responseDesc': 'unique key error'
-			                		});
-			                	else
-			                		res.json({
-										'responseCode': error.code,
-										'responseDesc': 'server error'
-			                		});
-						*/
-						res.redirect('/upload');
+			                    if(user.empCode == 1997) {
+			                    	req.session.isAdmin = true;
+			                    } else {
+			                    	req.session.isAdmin = false;
+			                    }
+			                    res.redirect('/upload');
+							}
+						})
+						// res.redirect('/catalog/employee/create');
+						// request.post('http://localhost:3000/catalog/employee/create').form({pawan: 'pawan'});
+						/*, function(error, httpResponse, body) {
+							// console.log(httpResponse);
+							if(error) {
+								console.log(error);
+							}
+							console.log(body);
+						});*/
+						// employee.exployee_create_post(req, res);
 					});
 				});
 			}
