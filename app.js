@@ -19,7 +19,7 @@ var createCentre = require('./routes/admin/createCentre');
 var addLocation = require('./routes/admin/addLocation');
 var scheduleDuty = require('./routes/admin/scheduleDuty');
 var upload = require('./routes/upload');
-
+var attendance = require('./routes/attendance');
 var app = express();
 
 // view engine setup
@@ -59,6 +59,7 @@ app.use('/admin/createCentre', createCentre);
 app.use('/upload', upload);
 app.use('/admin/addLocation', addLocation);
 app.use('/admin/scheduleDuty', scheduleDuty);
+app.use('/attendance', attendance);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

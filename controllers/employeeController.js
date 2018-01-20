@@ -21,10 +21,12 @@ exports.employee_create_get = function(req,res,next){
 
 
 exports.employee_create_post = function(req,res,next){
+  console.log(req);
    console.log('Inside create employee');
+    // + ' ' + req.body.lastName,
    var employees_instance = new employees({
         empCode: req.body.empCode,
-        empName: req.body.firstName + ' ' + req.body.lastName,
+        empName: req.body.firstName,
         contact: req.body.contact,
         password: req.body.hash,
         isImage : req.body.isImage
@@ -34,7 +36,8 @@ exports.employee_create_post = function(req,res,next){
         if(e){
             console.log("Employee instance could not be saved !!");
             //throw e;
-            res.status(400).send(e);
+            // res.status(400).send(e);
+            res.send('error');
         }
         else{
             res.send(doc); 

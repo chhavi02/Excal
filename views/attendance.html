@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WebRTC and Face Recog</title>
+	<style type="text/css">
+		#canvas {
+			display: none;
+		}
+		img {
+			display: none;
+		}
+	</style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script type="text/javascript" src="javascripts/attendance.js"></script>
+</head>
+<body>
+	<div class="camera">
+		<video id="video">Video stream not available.</video>
+		<button id="startbutton">Take photo</button>
+	</div>
+	<canvas id="canvas"></canvas>
+	<div class="output">
+		<img id="photo1" alt="The screen capture will appear in this box.">
+		<img id="photo2" alt="The screen capture will appear in this box.">
+		<img id="photo3" alt="The screen capture will appear in this box.">
+		<img id="photo4" alt="The screen capture will appear in this box.">
+		<img id="photo5" alt="The screen capture will appear in this box.">
+	</div>
+</body>
+</html>

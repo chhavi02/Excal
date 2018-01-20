@@ -3,7 +3,15 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+	if(req.session && req.session.empCode) {
+		if(req.session.isAdmin) {
+			res.redirect('admin/dashboard');
+		} else {
+			res.send('Normal User');
+		}
+	} else {
+		res.render('index');
+	}
 });
 
 module.exports = router;

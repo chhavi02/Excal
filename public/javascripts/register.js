@@ -1,14 +1,10 @@
 (function(d, $) {
 	var DOM = {
 		empCode: $('#empCode'),
-<<<<<<< HEAD
-		phoneNumber: $('#phoneNumber'),
 		password: $('#password'),
 		confirmPassword: $('#confirmPassword'),
-		registerForm: $('.registerForm')
-=======
+		registerForm: $('.registerForm'),
 		contact: $('#contact')
->>>>>>> 4c88bc945a61bf2cf2750851020503e195f43fb1
 	},
 	Functions = {
 		submitRegisterForm: function(event) {
@@ -33,7 +29,7 @@
                         setTimeout(function () {
                             location.reload();
                         }, 10000);
-                    } else if (json.responseCode == 23505) {
+                    } else if (json.responseCode == 11000) {
                         /*DOM.errorBox.css('position', 'absolute');
                         DOM.errorBox.css('visibility', 'visible');
                         DOM.errorMessage.html('User with Employee ID already exists.');*/
@@ -45,12 +41,15 @@
 				}, 'json');
 			return false;
 			}
+			return false;
 		}
 	}, Variables = {
 
 	}
 
 	$(d).ready(function() {
+		console.log('ready');
+		console.log(DOM.empCode.val());
 		DOM.empCode.kendoMaskedTextBox({
 			mask: '0000'
 		});

@@ -15,14 +15,17 @@
 
 </head>
 
+
 <body>
     <div class="header">
         <h4>Night Duty</h4>
     </div>
     <div>
         <div class="col-md-2 side-nav">
-            <img src="/images/admin-icon.png" alt="Profile pic" class="img-responsive img-fluid rounded mx-auto d-block img-circle" id="admin-icon">
-            <p>Welcome abcdefgh</p>
+            <img src="<%= image %>" alt="Profile pic" class="img-responsive img-fluid rounded mx-auto d-block img-circle" id="admin-icon">
+            <p>Welcome
+                <%= name %>
+            </p>
             <a href="/admin/viewDuties" id="viewDuties">View Duties</a>
             <a href="/admin/createCentre" id="createCentre">Create Centre</a>
             <a href="/admin/addLocation" id="addLocation">Add location for verification</a>
