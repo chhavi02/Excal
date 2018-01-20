@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-var express = require('express');
-var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-module.exports = router;
-=======
 var express = require('express');
 var router = express.Router();
 
@@ -26,4 +15,3 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
->>>>>>> 2905068d253c8e37be94e62479d890d2b036083d
