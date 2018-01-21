@@ -20,6 +20,7 @@ exports.location_list = function(req,res,next){
 };
 
 exports.all_location_list = function(req,res,next){
+    console.log("Inside all location list function");
     locations.find({},{locationCode :1, locationName : 1, _id :0}).then((Locations) => {
         res.send({Locations});
        }, (e) => {
@@ -45,6 +46,7 @@ exports.location_create_get = function(req,res,next){
 
 
 exports.location_create_post = function(req,res,next){
+    console.log("Inside location post");
     var location_instance = new locations({
         locationCode: req.body.locationCode,
         locationName: req.body.locationName,
@@ -59,7 +61,7 @@ exports.location_create_post = function(req,res,next){
         }
         else{
             res.send(doc);
-            console.log("Lcoation added succefully !!");
+            console.log("Location added succefully !!");
             centres.update({_id: req.params.centre_id }, //centres same as imported from models
                 { $push :{ locations : location_instance._id }},function(err,result){
                 if(err){
@@ -71,7 +73,8 @@ exports.location_create_post = function(req,res,next){
                         console.log("Location added, succesfully rolled back");
                     })
                     console.log("Can't be updated !!");
-                    throw err;
+                    //throw err;
+                    res.status(400).send(e);
                     //this.location_delete_post(req,res,next); 
                 }//if close
                 else{

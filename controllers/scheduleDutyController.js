@@ -1,9 +1,9 @@
-var scheduleDutys = require('../models/scheduleDuty');
-//var con = require('../connection');
-//var db = con.db;
+var scheduleDuties = require('../models/scheduleDuty');
+var moment = require('moment');
+
 exports.scheduleDuty_detail = function(req, res, next) {
-    //console.log('something');
-    scheduleDuties.find({ 'empCode': req.params.empCode }).then((scheduleDuty) => {
+    console.log('List of all duties');
+    scheduleDuties.find({ '_id': req.params.scheduleDutyId }).then((scheduleDuty) => {
         res.send(scheduleDuty);
     }, (e) => {
         res.status.send(e);
@@ -11,13 +11,13 @@ exports.scheduleDuty_detail = function(req, res, next) {
 }
 
 exports.scheduleDuty_list = function(req, res, next) {
-    //console.log("Inside scheduleDutys list function");
+    console.log('List of all duties');
     scheduleDuties.find({}).then((scheduleDuties) => {
         res.send({ scheduleDuties });
     }, (e) => {
         res.status(400).send(e);
     });
-    //    scheduleDutys.find({},{scheduleDutyCode :1, scheduleDutyName : 1, _id :0}).toArray(function(err,result){
+    //    scheduleDuties.find({},{scheduleDutyCode :1, scheduleDutyName : 1, _id :0}).toArray(function(err,result){
     //        if(err)
     //        throw err;
     //        console.log(result);
@@ -25,23 +25,29 @@ exports.scheduleDuty_list = function(req, res, next) {
     //    });
 };
 
-exports.scheduleDuty_create_get = function(req, res, next) {
+exports.scheduleDuty_assign_get = function(req, res, next) {
 
 
 };
 
 
-exports.scheduleDuty_create_post = function(req, res, next) {
+exports.scheduleDuty_assign_post = function(req, res, next) {
     console.log('Inside create scheduleDuty');
-    var scheduleDutys_instance = new scheduleDutys({
+    var dutyStart = req.body.startDate + "T" + req.body.startTime + "Z";
+    var dutyEnd = req.body.endDate + "T" + req.body.endTime + "Z";
+    console.log(dutyStart);
+    console.log(dutyEnd);
+    var scheduleDuties_instance = new scheduleDuties({
         empCode: req.body.empCode,
-        centreName: req.body.centreCode,
-        locationName: req.body.locationCode,
-        startDuty: new Date(req.body.startDuty),
-        endDuty: new Date(req.body.endDuty)
+        centreCode: req.body.centreCode,
+        locationCode: req.body.locationCode,
+        startDuty: new Date(dutyStart),
+        endDuty: new Date(dutyEnd)
+            //  startDuty: new Date(req.body.startDuty), //"2016-05-18T16:00:00Z"
+            //  endDuty: new Date(req.body.endDuty)
     });
     console.log('Before saving');
-    scheduleDutyies_instance.save(function(e, doc) {
+    scheduleDuties_instance.save(function(e, doc) {
         if (e) {
             console.log("scheduleDuty instance could not be saved !!");
             //throw e;
@@ -70,4 +76,4 @@ exports.scheduleDuty_update_get = function(req, res, next) {
 exports.scheduleDuty_update_post = function(req, res, next) {
 
 
-}
+};

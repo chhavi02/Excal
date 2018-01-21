@@ -5,13 +5,13 @@ var router = express.Router();
 var centre_controller = require('../controllers/centreController');
 var location_controller = require('../controllers/locationController');
 var employee_controller = require('../controllers/employeeController');
-//var scheduleDuty_controller = require('../controllers/scheduleDutyController');
+var scheduleDuty_controller = require('../controllers/scheduleDutyController');
 
 
 //router.get('/',nanoskill_controller.index);
 
 /* GET request for creating a centre. NOTE This must come before routes that display centres (uses id) */
-router.get('/centre/create', centre_controller.centre_create_get);
+router.get('/centre/create', centre_controller.centre_create_get); //Working
 
 /* POST request for creating centre. */
 router.post('/centre/create', centre_controller.centre_create_post);
@@ -29,10 +29,10 @@ router.get('/centre/:id/update', centre_controller.centre_update_get);
 router.post('/centre/:id/update', centre_controller.centre_update_post);
 
 /* GET request for one centre. */
-router.get('/centre/:centreCode', centre_controller.centre_detail);
+router.get('/centre/:centreCode', centre_controller.centre_detail); //Working
 
 /* GET request for list of all centre items. */
-router.get('/centres', centre_controller.centre_list);
+router.get('/centres', centre_controller.centre_list); //Working
 //router.get('/centre/list', centre_controller.centre_list); //Why doesn't it work while the below route does
 
 
@@ -60,9 +60,14 @@ router.post('/location/:id/update', location_controller.location_update_post);
 router.get('/location/:locationCode', location_controller.location_detail);
 
 /* GET request for list of all location items. */
-router.get('/location/list', location_controller.all_location_list);
+//router.get('/location/list', location_controller.all_location_list);
+//router.get('/location/list', location_controller.location_list);
+router.get('/locations', location_controller.all_location_list);
 
+/* GET request for list of selected centre locations. */
 router.get('/location/centreCode/list', location_controller.location_list);
+
+
 
 
 
@@ -113,7 +118,7 @@ router.get('/scheduleDuty/:id/update', scheduleDuty_controller.scheduleDuty_upda
 router.post('/scheduleDuty/:id/update', scheduleDuty_controller.scheduleDuty_update_post);
 
 /* GET request for one scheduleDuty. */
-router.get('/:id', scheduleDuty_controller.scheduleDuty_detail);
+router.get('/scheduleDuty/scheduleDutyId', scheduleDuty_controller.scheduleDuty_detail);
 
 /* GET request for list of all scheduleDuty items. */
 router.get('/scheduleDuty/list', scheduleDuty_controller.scheduleDuty_list);

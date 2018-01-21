@@ -18,13 +18,29 @@ var scheduleDutySchema = new Schema({
         type : Number,
         required : true
     },
+    // startDate:{
+    //     type:String,
+    //     required:true
+    // },
+    // endDate : {
+    //     type:String,
+    //     required:true
+    // },
+    // startTime : {
+    //     type:String,
+    //     required:true 
+    // },
+    // endTime : {
+    //     type:String,
+    //     required:true  
+    // },
     startDuty :{
         type :Date,
-        required : true
+        //required : true
     },
     endDuty: {
         type :Date,
-        required : true
+        //required : true
     }
 })
 
