@@ -17,9 +17,10 @@ router.get('/', checkLogin, function(req, res, next) {
 	if(req.session.image) {
 		res.redirect('/');
 	} else {
-		req.session.name = 'Pawandeep' // Set for testing.
+		console.log(req.session.empName);
+		// req.session.name = 'Pawandeep' // Set for testing.
 		res.render('upload', {
-			name: req.session.name
+			name: req.session.empName
 		});
 	}
 });
