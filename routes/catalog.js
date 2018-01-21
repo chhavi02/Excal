@@ -1,4 +1,5 @@
 var express = require('express')
+var centres = require('../models/centre');
 
 var router = express.Router();
 
@@ -14,7 +15,13 @@ var scheduleDuty_controller = require('../controllers/scheduleDutyController');
 router.get('/centre/create', centre_controller.centre_create_get);
 
 /* POST request for creating centre. */
-router.post('/centre/create', centre_controller.centre_create_post);
+// router.post('/centre/create', centre_controller.centre_create_post);
+
+router.post('/centre/create', function(req, res) {
+	console.log('ye wala');
+	console.log(req.body);
+});
+
 
 /* GET request to delete centre. */
 router.get('/centre/:id/delete', centre_controller.centre_delete_get);

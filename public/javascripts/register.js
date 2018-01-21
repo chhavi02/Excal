@@ -9,37 +9,41 @@
 	Functions = {
 		submitRegisterForm: function(event) {
 			if(DOM.password.val() != DOM.confirmPassword.val()) {
-
+				$('.message').html('Passwords do not match.');
+				$('.alert').css('visibility', 'visible');
+				$('.alert').css('position', 'static');
+				return false;
 			} else {
-				console.log($(this).attr('action'));
-				console.log($(this).serialize());
+				$('.alert').css('position', 'absolute');
+				$('.alert').css('visibility', 'hidden');
 				$.post($(this).attr('action'), $(this).serialize(), function(json) {
 					console.log(json);
                     if (json.responseCode === 1) {
-                    /*    DOM.errorBox.css('position', 'absolute');
-                        DOM.errorBox.css('visibility', 'visible');
-                        DOM.errorMessage.html('Please select captcha');*/
+                    	$('.alert').css('position', 'static');
+                    	$('.message').html('Please select captcha.');
+						$('.alert').css('visibility', 'visible');
                         DOM.password.val('');
                         DOM.confirmPassword.val('');
                         return false;
                     } else if (json.responseCode === 2) {
-                        /*DOM.errorBox.css('position', 'absolute');
-                        DOM.errorBox.css('visibility', 'visible');
-                        DOM.errorMessage.html('Failed Captcha Verification. Refreshing page in 5s.');*/
+                    	$('.alert').css('position', 'static');
+                    	$('.message').html('Failed captcha verification. Refreshing page in 5s.');
+						$('.alert').css('visibility', 'visible');
                         setTimeout(function () {
                             location.reload();
                         }, 10000);
                     } else if (json.responseCode == 11000) {
-                        /*DOM.errorBox.css('position', 'absolute');
-                        DOM.errorBox.css('visibility', 'visible');
-                        DOM.errorMessage.html('User with Employee ID already exists.');*/
+                    	$('.alert').css('position', 'static');
+                    	$('.message').html('User with employee ID already exists.');
+						$('.alert').css('visibility', 'visible')
                         return false;
                     } else {
-                        // window.location.replace('http://localhost:3000');
                         $(location).attr('href', 'http://localhost:3000');
+                        // return false;
                     }
+                    return false;
 				}, 'json');
-			return false;
+				return false;
 			}
 			return false;
 		}
