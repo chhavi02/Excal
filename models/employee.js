@@ -27,6 +27,9 @@ var employeeSchema = new Schema({
     isImage : {
         type : Boolean,
         required : true
+    },
+    token: {
+        type: String
     }
 });
 

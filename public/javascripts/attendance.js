@@ -12,6 +12,7 @@
 	var startbutton = null;
 
 	function startup() {
+		console.log('Inside Start up');
 		video = document.getElementById('video');
 		canvas = document.getElementById('canvas');
 		for(var i = 1; i <= 5; i++) {
@@ -21,6 +22,7 @@
 
 		navigator.mediaDevices.getUserMedia({video: true, audio: false})
 			.then(function(stream) {
+				console.log('Cam permission allowed');
 				video.srcObject = stream;
 				video.play();
 			})
@@ -31,7 +33,7 @@
 		video.addEventListener('canplay', function(event) {
 			if(!streaming) {
 				height = video.videoHeight / (video.videoWidth / width);
-
+				console.log('streaming');
 				video.setAttribute('width', width);
 				video.setAttribute('height', height);
 				canvas.setAttribute('width', width);
@@ -42,13 +44,16 @@
 
 		startbutton.addEventListener('click', function(event) {
 			if(navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(function(position) {
-					lat = position.coords.latitude;
-					long = position.coords.longitude;
-					console.log(lat, long);
-					console.log('Successfully retrieved device location');
-					takepicture();
-				});
+				console.log('geo loc allowed');
+				// navigator.geolocation.getCurrentPosition(function(position) {
+				// 	console.log('geo loc taken');
+				// 	lat = position.coords.latitude;
+				// 	long = position.coords.longitude;
+				// 	console.log(lat, long);
+				// 	console.log('Successfully retrieved device location');
+				// 	takepicture();
+				// });
+				takepicture();
 			}
 			event.preventDefault();
 		}, false);
@@ -61,7 +66,7 @@
 		context.fillStyle = '#AAA';
 		context.fillRect(0, 0, canvas.width, canvas.height);
 
-		var data = canvas.toDataURL('image/jpeg');
+		var data = canvas.toDataURL('image/png');
 		for (var i = 1; i <= 5; i++) {
 			// photo[i].setAttribute('src', data);
 			photo[i] = data;
@@ -77,7 +82,7 @@
 			var data;
 			var stop = setInterval(function() {
 				context.drawImage(video, 0, 0, width, height);
-				testData = data = canvas.toDataURL('image/jpeg');
+				testData = data = canvas.toDataURL('image/png');
 				// photo[count].setAttribute('src', data);
 				photo[count] = data;
 				console.log('le rahe hain.');
@@ -119,19 +124,19 @@
 
 	function processImage() {
 	    console.log('Image clicked successfully');
-	    var data = {
-	    	photo: photo,
-	    	lat: lat,
-	    	long: long
-	    };
 	    console.log(data);
 	    console.log(photo);
 	    var i;
 	    var imageData = '';
 	    for(i = 1; i <= 4; i++) {
-	    	imageData += photo[i] + ' | ';
+	    	imageData += photo[i] + '|';
 	    }
-	    console.log(imageData);
+	    imageData += photo[5];
+	    var data = {
+	    	photo: imageData,
+	    	lat: lat,
+	    	long: long
+	    };
 	    $.ajax({
 	    	type: 'post',
 	    	url: '/attendance',

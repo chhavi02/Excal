@@ -6,10 +6,6 @@ var Schema = mongoose.Schema;
 var mongooseId = Schema.Types.ObjectId;
 
 var centreSchema = new Schema({
-    centreCode : {
-        type :Number,
-        required : true
-    },
     centreName : {
         type :String,
         required : true
@@ -21,12 +17,7 @@ var centreSchema = new Schema({
     longitude: {
         type :Number,
         required : true
-    },
-    locations: [{
-        type: mongooseId,
-        ref: 'location',
-        required: true
-    }]
+    }
 });
 
 module.exports = mongoose.model('centre', centreSchema);

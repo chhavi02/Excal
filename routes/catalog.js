@@ -1,4 +1,5 @@
 var express = require('express')
+var centres = require('../models/centre');
 
 var router = express.Router();
 
@@ -11,10 +12,16 @@ var scheduleDuty_controller = require('../controllers/scheduleDutyController');
 //router.get('/',nanoskill_controller.index);
 
 /* GET request for creating a centre. NOTE This must come before routes that display centres (uses id) */
-router.get('/centre/create', centre_controller.centre_create_get); //Working
+router.get('/centre/create', centre_controller.centre_create_get);
 
 /* POST request for creating centre. */
-router.post('/centre/create', centre_controller.centre_create_post);
+// router.post('/centre/create', centre_controller.centre_create_post);
+
+router.post('/centre/create', function(req, res) {
+	console.log('ye wala');
+	console.log(req.body);
+});
+
 
 /* GET request to delete centre. */
 router.get('/centre/:id/delete', centre_controller.centre_delete_get);
@@ -29,10 +36,10 @@ router.get('/centre/:id/update', centre_controller.centre_update_get);
 router.post('/centre/:id/update', centre_controller.centre_update_post);
 
 /* GET request for one centre. */
-router.get('/centre/:centreCode', centre_controller.centre_detail); //Working
+router.get('/centre/:centreCode', centre_controller.centre_detail);
 
 /* GET request for list of all centre items. */
-router.get('/centres', centre_controller.centre_list); //Working
+router.get('/centres', centre_controller.centre_list);
 //router.get('/centre/list', centre_controller.centre_list); //Why doesn't it work while the below route does
 
 
@@ -66,7 +73,6 @@ router.get('/locations', location_controller.all_location_list);
 
 /* GET request for list of selected centre locations. */
 router.get('/location/centreCode/list', location_controller.location_list);
-
 
 
 
@@ -118,10 +124,10 @@ router.get('/scheduleDuty/:id/update', scheduleDuty_controller.scheduleDuty_upda
 router.post('/scheduleDuty/:id/update', scheduleDuty_controller.scheduleDuty_update_post);
 
 /* GET request for one scheduleDuty. */
-router.get('/scheduleDuty', scheduleDuty_controller.scheduleDuty_detail);
+router.get('/:id', scheduleDuty_controller.scheduleDuty_detail);
 
 /* GET request for list of all scheduleDuty items. */
-router.get('/scheduleDuty/list', scheduleDuty_controller.scheduleDuty_list);
+router.get('/scheduleDuty', scheduleDuty_controller.scheduleDuty_list);
 
 
 module.exports = router;

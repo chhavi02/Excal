@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var firebase = require('firebase');
 
 var index = require('./routes/index');
 var catalog = require('./routes/catalog');
@@ -22,6 +23,14 @@ var upload = require('./routes/upload');
 var attendance = require('./routes/attendance');
 var normalUser = require('./routes/normalUser/dashboard');
 var app = express();
+firebase.initializeApp({
+    apiKey: "AIzaSyAfySkE62DUlC9TvsRPvhA5ZuhoEIfMVcw",
+    authDomain: "excal18-b2af9.firebaseapp.com",
+    databaseURL: "https://excal18-b2af9.firebaseio.com",
+    projectId: "excal18-b2af9",
+    storageBucket: "excal18-b2af9.appspot.com",
+    messagingSenderId: "413354269983"
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -67,6 +76,10 @@ app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
+});
+
+app.listen(3000, ()=>{
+  console.log("Listening on port 3000");
 });
 
 // error handler

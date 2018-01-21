@@ -2,8 +2,14 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome</title>
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <script async defer src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDKj2Q90H47u4LlFXgigZMOnXplH-3yFnY&callback=initMap">
-    </script>
+    </script> -->
     <script type="text/javascript" src="/javascripts/createCentre.js"></script>
 </head>
 
@@ -12,9 +18,11 @@
     <div class="form-group form-row col-md-12">
         <div class="col-md-2"></div>
         <div class="col-md-8" style="padding-top: 20px;">
+        <form action="/catalog/centre/create" method="post">
             <label for="centre">Type the centre name</label>
             <input type="text" name="centre" id="centre" class="form-control" required>
-            <button type="button" class="btn btn-primary btn-sm btn-block" id="findCentre">ENTER</button>
+            <button type="submit" class="btn btn-primary btn-sm btn-block" id="findCentre">ENTER</button>
+        </form>
         </div>
         <div class="col-md-2"></div>
     </div>
