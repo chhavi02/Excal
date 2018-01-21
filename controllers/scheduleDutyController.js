@@ -1,10 +1,10 @@
 var scheduleDuties = require('../models/scheduleDuty');
-var moment = require('moment');
+// var moment = require('moment');
 
 exports.scheduleDuty_detail = function(req, res, next) {
     console.log('List of all duties');
-    scheduleDuties.find({ '_id': req.params.scheduleDutyId }).then((scheduleDuty) => {
-        res.send(scheduleDuty);
+    scheduleDuties.find({ 'empCode': req.session.empCode }).then((scheduleDuty) => {
+        res.json(scheduleDuty);
     }, (e) => {
         res.status.send(e);
     });

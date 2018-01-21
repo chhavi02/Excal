@@ -118,7 +118,7 @@ router.get('/scheduleDuty/:id/update', scheduleDuty_controller.scheduleDuty_upda
 router.post('/scheduleDuty/:id/update', scheduleDuty_controller.scheduleDuty_update_post);
 
 /* GET request for one scheduleDuty. */
-router.get('/scheduleDuty/scheduleDutyId', scheduleDuty_controller.scheduleDuty_detail);
+router.get('/scheduleDuty', scheduleDuty_controller.scheduleDuty_detail);
 
 /* GET request for list of all scheduleDuty items. */
 router.get('/scheduleDuty/list', scheduleDuty_controller.scheduleDuty_list);

@@ -49,7 +49,8 @@ exports.loginPOST = function(req, res) {
                         // });
                     } else {
                         req.session.isAdmin = false;
-                        res.send('normal user');
+                        // res.send('normal user');
+                        res.redirect('/normalUser');
                     }
 
                 }

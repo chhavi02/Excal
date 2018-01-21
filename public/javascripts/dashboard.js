@@ -128,5 +128,17 @@
 	        }
 	    });
 
+	    $('#scheduleDutyDetails').kendoDropDownList({
+	        dataTextField: 'centreName',
+	        dataValueField: 'centreCode',
+	        dataSource: {
+	            type: 'json',
+	            transport: {
+	                read: 'http://localhost:3000/catalog//scheduleDuty'
+	            }
+	        }
+	    });
+
+
 
 	});
