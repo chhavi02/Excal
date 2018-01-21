@@ -20,6 +20,7 @@ exports.location_list = function(req,res,next){
 };
 
 exports.all_location_list = function(req,res,next){
+    console.log("Inside all location list function");
     locations.find({},{locationCode :1, locationName : 1, _id :0}).then((Locations) => {
         res.send({Locations});
        }, (e) => {

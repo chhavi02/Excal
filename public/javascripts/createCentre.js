@@ -11,7 +11,7 @@ var marker = new google.maps.Marker({
     map: map
    });
 	}
-$('#findCentre').on('click', function(e) {
+var req = $('#findCentre').on('click', function(e) {
 	var centre = document.getElementById("centre").value;
 	console.log(e);
 	$.ajax({
@@ -45,3 +45,7 @@ $('#findCentre').on('click', function(e) {
 	});
 
 });
+
+req.done(function(data) {
+	
+}
