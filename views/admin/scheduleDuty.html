@@ -2,6 +2,12 @@
 <html>
 
 <head>
+    <link rel="stylesheet" type="text/css" href="http://kendo.cdn.telerik.com/2017.2.621/styles/kendo.common.min.css">
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.mobile.min.css" />
+    <script type="text/javascript" src="http://kendo.cdn.telerik.com/2017.2.621/js/kendo.all.min.js"></script>
+
 </head>
 
 <body>
@@ -9,11 +15,62 @@
     <div class="form-group form-row col-md-12">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            SCHEDULE DUTY
+            <fieldset>
+                <form class="registerForm" action="/register" method="post">
+                    <div class="form-row col-md-12">
+                        <h3 class="heading">Schedule Duty</h3>
+                    </div>
+                    <div class="form-row col-md-12 alert alert-danger fade in hidden">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Error!</strong> <span class="message">A problem has been occurred while submitting your data.</span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="empName">Select Employee</label><br>
+                            <select id="empName" name="empName" class="form-control" required>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="centreName">Select Centre</label><br>
+                            <select id="centreName" name="centreName" class="form-control" required>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="startDate" Start Date></label>
+                                <input type="date" name="startDate" id="startDate" class="form-control" placeholder="Last name" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="startTime">Start Time</label>
+                                <input type="time" name="startTime" id="startTime" class="form-control" placeholder="First name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="endDate">End Date </label>
+                                <input type="date" name="endDate" id="endDate" class="form-control" placeholder="Last name" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="endTime">End Time</label>
+                                <input type="time" name="endTime" id="endTime" class="form-control" placeholder="First name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-row col-md-12">
+                            <button type="submit" class="btn btn-primary btn-sm btn-block">SUBMIT</button>
+                        </div>
+                    </div>
+
+                </form>
+            </fieldset>
+
+
+
+
         </div>
         <div class="col-md-2"></div>
     </div>
-
+    <script type="text/javascript" src="javascripts/dashboard.js"></script>
 </body>
 
 </html>
