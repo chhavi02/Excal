@@ -67,7 +67,7 @@ exports.registerPOST = function(req, res) {
 								var user = req.body;
 								console.log(doc);
 								req.session.empCode = user.empCode;                                                                                                                                     
-			                    req.session.empName = user.empName;                                                                                                                                 
+			                    req.session.empName = user.firstName;                                                                                                                                 
 			                    req.session.cookie.maxAge = 24 * 60 * 60 * 1000 * 365; 
 			                    req.session.image = null;
 			                    if(user.empCode == 1997) {
