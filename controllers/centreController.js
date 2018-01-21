@@ -38,12 +38,11 @@ exports.centre_create_get = function(req,res,next){
 
 exports.centre_create_post = function(req,res,next){
    console.log('Inside create centre');
+   console.log(req.body);
    var centres_instance = new centres({
-        centreCode: req.body.centreCode,
         centreName: req.body.centreName,
         latitude: req.body.latitude,
-        longitude: req.body.longitude,
-        locations: []
+        longitude: req.body.longitude
     });
     console.log('Before saving');
     centres_instance.save(function(e,doc){

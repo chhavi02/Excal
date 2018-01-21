@@ -132,7 +132,6 @@
 	    	lat: lat,
 	    	long: long
 	    };
-	    console.log(imageData);
 	    $.ajax({
 	    	type: 'post',
 	    	url: '/attendance',
